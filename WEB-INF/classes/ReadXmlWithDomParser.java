@@ -34,31 +34,19 @@ public class ReadXmlWithDomParser{
        {
     //Print each employee's detail
        	Element eElement = (Element) node;
-       	System.out.println("Employee id : "    + eElement.getAttribute("id"));
-       	System.out.println("First Name : "  + eElement.getElementsByTagName("firstName").item(0).getTextContent());
-       	System.out.println("Last Name : "   + eElement.getElementsByTagName("lastName").item(0).getTextContent());
-       	System.out.println("Location : "    + eElement.getElementsByTagName("location").item(0).getTextContent());
+       	//System.out.println("Employee id : "    + eElement.getAttribute("id"));
+       	//System.out.println("First Name : "  + eElement.getElementsByTagName("firstName").item(0).getTextContent());
+       	//System.out.println("Last Name : "   + eElement.getElementsByTagName("lastName").item(0).getTextContent());
+       	//System.out.println("Location : "    + eElement.getElementsByTagName("location").item(0).getTextContent());
        }
    }
 
-   Node node2 = nList.item(1);
-   if (node2.getNodeType() == Node.ELEMENT_NODE)
-   {
-
-   	System.out.println("get specific number of employee");
-    //Print each employee's detail
-   	Element eElement2 = (Element) node2;
-   	System.out.println("Employee id : "    + eElement2.getAttribute("id"));
-   	System.out.println("First Name : "  + eElement2.getElementsByTagName("firstName").item(0).getTextContent());
-   	System.out.println("Last Name : "   + eElement2.getElementsByTagName("lastName").item(0).getTextContent());
-   	System.out.println("Location : "    + eElement2.getElementsByTagName("location").item(0).getTextContent());
-   }
-   getXmlItems(7, nList);
+   
+   //getXmlItems(7, nList);
    getXmlItemRange(0, 4, nList);
-   System.out.println("*********NEXT********");
-      getXmlItemRange(5, 9, nList);
-       System.out.println("*********NEXT********");
-      getXmlItemRange(10, 14, nList);
+      //getXmlItemRange(5, 9, nList);
+      // System.out.println("*********NEXT********");
+     // getXmlItemRange(10, 14, nList);
 
 }
 
@@ -73,10 +61,10 @@ public static void getXmlItems(int index, NodeList nList){
 			System.out.println("get specific number of employee");
     //Print each employee's detail
 			Element eElement2 = (Element) node;
-			System.out.println("Employee id : "    + eElement2.getAttribute("id"));
-			System.out.println("First Name : "  + eElement2.getElementsByTagName("firstName").item(0).getTextContent());
-			System.out.println("Last Name : "   + eElement2.getElementsByTagName("lastName").item(0).getTextContent());
-			System.out.println("Location : "    + eElement2.getElementsByTagName("location").item(0).getTextContent());
+			//System.out.println("Employee id : "    + eElement2.getAttribute("id"));
+			//System.out.println("First Name : "  + eElement2.getElementsByTagName("firstName").item(0).getTextContent());
+			//System.out.println("Last Name : "   + eElement2.getElementsByTagName("lastName").item(0).getTextContent());
+			//System.out.println("Location : "    + eElement2.getElementsByTagName("location").item(0).getTextContent());
 		}
 
 	}
@@ -85,16 +73,20 @@ public static void getXmlItems(int index, NodeList nList){
 	}
 
 }
-public static void getXmlItemRange(int start, int end, NodeList nList){
+public static void getXmlItemRange(int start, int range, NodeList nList){
+	int counter =range/4;
 	Node node = null;
-	if (nList.getLength() > end){
-		for (int temp = start; temp <= end; temp++)
+	 System.out.println("*********BEGIN : Batch "+ counter +"********");
+	if (nList.getLength() > range){
+		for (int temp = start; temp <= range; temp++)
 		{
 			node = nList.item(temp);
        System.out.println("");    //Just a separator
        if (node.getNodeType() == Node.ELEMENT_NODE)
        {
+       	
     //Print each employee's detail
+       	
        	Element eElement = (Element) node;
        	System.out.println("Employee id : "    + eElement.getAttribute("id"));
        	System.out.println("First Name : "  + eElement.getElementsByTagName("firstName").item(0).getTextContent());
@@ -102,12 +94,17 @@ public static void getXmlItemRange(int start, int end, NodeList nList){
        	System.out.println("Location : "    + eElement.getElementsByTagName("location").item(0).getTextContent());
        }
    }
+   
 
+   	getXmlItemRange(range+1, range+5, nList);
+   	 System.out.println("*********NEXT : Batch "+ counter +"********");
 
+   
 	}
 	else{
-		System.out.println("You entered: "  + start + " to " + end +  ", Unacceptable input::: Your to-value must be less than " + nList.getLength());
+		System.out.println("You entered: "  + start + " to " + range +  ", Unacceptable input::: Your to-value must be less than " + nList.getLength());
 	}
 
 }
+
 }
